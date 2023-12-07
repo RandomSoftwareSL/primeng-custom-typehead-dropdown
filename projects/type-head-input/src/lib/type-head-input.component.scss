@@ -1,0 +1,15 @@
+// Import primeflex styles
+@import 'primeflex/primeflex.scss';
+.custom-dropdown {
+  &-typehead {
+    .p-dropdown {
+      @include styleclass("w-full");
+      .p-dropdown-trigger {
+        @include styleclass("hidden");
+      }
+      .p-inputtext {
+        @include styleclass("text-sm");
+      }
+    }
+  }
+}

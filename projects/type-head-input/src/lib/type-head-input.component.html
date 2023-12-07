@@ -1,0 +1,72 @@
+<p-dropdown
+  #select
+  [options]="enableServerSideData ? (list$ | async)! : items"
+  (onChange)="select.filterValue = $event?.value; onFilterEmitter($event)"
+  [formControl]="control | formControl"
+  [editable]="true"
+  [filter]="select?.value?.length > 0 ? true : false"
+  (onFocus)="select.show()"
+  [optionLabel]="optionLabel"
+  [placeholder]="placeholder"
+  [autoDisplayFirst]="autoDisplayFirst"
+  [showClear]="showClear"
+  [styleClass]="customClasses"
+  [panelStyleClass]="panelStyleClass"
+  [disabled]="disabled"
+  [name]="name"
+  class="custom-dropdown-typehead {{
+    control.touched && control.invalid ? 'ng-invalid ng-dirty' : ''
+  }}"
+  (onShow)="onShowDropdown($event)"
+  (onHide)="select.resetFilter()"
+>
+  <!--  item template -->
+  <ng-template *ngIf="!itemTemplate" let-option pTemplate="item">
+    <span *ngIf="!loading"> {{ option?.label }}</span>
+    <p-skeleton *ngIf="loading" styleClass="mb-2"></p-skeleton>
+  </ng-template>
+
+  <ng-template pTemplate="empty">
+    <span *ngIf="!loading">{{ noResultsFoundText }}</span>
+    <p-skeleton *ngIf="loading" styleClass="mb-2"></p-skeleton>
+  </ng-template>
+
+  <!-- override item template -->
+  <ng-template *ngIf="itemTemplate" let-option pTemplate="item">
+    <ng-container
+      [ngTemplateOutlet]="itemTemplate"
+      [ngTemplateOutletContext]="{ optionLabel: option.label }"
+    ></ng-container>
+  </ng-template>
+
+  <!-- filter template -->
+  <ng-template *ngIf="!filterTemplate" pTemplate="filter">
+    <div
+      *ngIf="select?.value?.length > 0 && !isAvailability"
+      (click)="addNewValue(select.value)"
+      class="text-base text-primary font-medium"
+    >
+      <span class="font-italic font-normal">{{ addNewText }}</span> "{{
+        select.value
+      }}"
+    </div>
+  </ng-template>
+
+  <!-- override filter template -->
+  <ng-template *ngIf="filterTemplate" pTemplate="filter">
+    <ng-container
+      [ngTemplateOutlet]="filterTemplate"
+      [ngTemplateOutletContext]="{ selectValue: select.value }"
+    ></ng-container>
+  </ng-template>
+</p-dropdown>
+
+<ng-container *ngIf="control.touched">
+  <div class="mt-1" *ngFor="let error of control?.errors | keyvalue">
+    <div [ngSwitch]="error?.key">
+      <div *ngSwitchCase="'required'">
+        <span class="text-xs text-red-400"> {{ requiredErrorMessage }}</span>
+      </div>
+    </div>
+  </div>
+</ng-container>
