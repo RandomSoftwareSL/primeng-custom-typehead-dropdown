@@ -1,0 +1,14 @@
+<form [formGroup]="consumerForm">
+  <typeHeadInput
+    [disabled]="consumerForm.get('year')?.disabled ?? false"
+    [control]="getFormControl['year'] | formControl"
+    [customClasses]="customSelectInputClass"
+    [placeholder]="'Year'"
+    [name]="'value'"
+    [isNumberInput]="true"
+    [serverSideSearchCallback]="yearCallBackFunction"
+    [enableServerSideData]="true"
+    [customFieldText]="'Year'"
+    (newValue)="changeSelectedText($event)"
+  ></typeHeadInput>
+</form>
