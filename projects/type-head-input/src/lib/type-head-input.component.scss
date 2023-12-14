@@ -1,0 +1,10 @@
+.custom-dropdown {
+  &-typehead {
+    .p-dropdown {
+      width: 100%;
+      .p-dropdown-trigger {
+        display: none;
+      }
+    }
+  }
+}
