@@ -111,3 +111,7 @@ Feel free to contribute to the development of TypeHead Input. Check out the cont
 This project is licensed under the MIT License - see the LICENSE.md file for details.
 
 You can copy this entire block and paste it into your README.md file.
+
+# Package
+
+Publish [![publish](https://github.com/RandomSoftwareSL/primeng-custom-typehead-dropdown/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/RandomSoftwareSL/primeng-custom-typehead-dropdown/actions/workflows/npm-publish.yml)
