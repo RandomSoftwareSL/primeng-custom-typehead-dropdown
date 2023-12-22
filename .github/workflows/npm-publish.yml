@@ -13,7 +13,8 @@ jobs:
           node-version: 18
           registry-url: "https://registry.npmjs.org"
       - run: npm install
-      - run: npm ci
-      - run: npm publish --access public
+      - run: npm run build-lib
+      - working-directory: ./dist/type-head-input
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}

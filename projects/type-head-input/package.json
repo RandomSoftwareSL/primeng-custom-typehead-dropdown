@@ -1,6 +1,6 @@
 {
-  "name": "type-head-input",
-  "version": "0.0.0",
+  "name": "@randomsoftwareltd/type-head-input",
+  "version": "0.0.3",
   "peerDependencies": {
     "@angular/common": "^15.1.4",
     "@angular/core": "^15.1.4",
