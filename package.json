@@ -1,6 +1,6 @@
 {
-  "name": "type-head-input",
-  "version": "0.0.0",
+  "name": "@randomsoftwareltd/type-head-input",
+  "version": "0.0.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -10,7 +10,6 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^15.1.4",
     "@angular/common": "^15.1.4",

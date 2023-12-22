@@ -112,6 +112,6 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 
 You can copy this entire block and paste it into your README.md file.
 
-# Package
+# Package Status
 
-Publish [![publish](https://github.com/RandomSoftwareSL/primeng-custom-typehead-dropdown/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/RandomSoftwareSL/primeng-custom-typehead-dropdown/actions/workflows/npm-publish.yml)
+[![publish](https://github.com/RandomSoftwareSL/primeng-custom-typehead-dropdown/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/RandomSoftwareSL/primeng-custom-typehead-dropdown/actions/workflows/npm-publish.yml)
