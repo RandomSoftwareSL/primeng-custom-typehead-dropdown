@@ -20,6 +20,9 @@
     "module": "ES2022",
     "useDefineForClassFields": false,
     "paths": {
+      "@randomsoftwareltd/type-head-input": [
+        "./dist/randomsoftwareltd/type-head-input"
+      ],
       "typeHeadInput": [
         "dist/type-head-input"
       ]

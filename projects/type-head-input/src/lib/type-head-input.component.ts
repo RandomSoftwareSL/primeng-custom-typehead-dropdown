@@ -184,15 +184,19 @@ export class TypeHeadInputComponent {
 
   onFilterEmitter(event: any) {
     if (this.enableServerSideData) {
-      this.isAvailability = this.select.options.some((item) => {
+      if (this.select?.options === null) {
+        this.selectedTypeHeadSource.next(event);
+        return;
+      }
+      this.isAvailability = this.select?.options!.some((item) => {
         return this.isCaseInsensitive
-          ? item.value.toLowerCase() === this.select.filterValue.toLowerCase()
+          ? item.value.toLowerCase() === this.select?.filterValue?.toLowerCase()
           : item.value === this.select.filterValue;
       });
     } else {
       this.isAvailability = this.items.some((item) => {
         return this.isCaseInsensitive
-          ? item.value.toLowerCase() === this.select.filterValue.toLowerCase()
+          ? item.value.toLowerCase() === this.select?.filterValue?.toLowerCase()
           : item.value === this.select.filterValue;
       });
     }
@@ -212,5 +216,13 @@ export class TypeHeadInputComponent {
       return inputSplit.join(" ");
     }
     return "";
+  }
+
+  onClick() {
+    if (this.select.overlayVisible) {
+      this.select.show();
+    } else {
+      this.select.hide();
+    }
   }
 }

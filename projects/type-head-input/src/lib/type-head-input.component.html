@@ -1,11 +1,13 @@
 <p-dropdown
   #select
   [options]="enableServerSideData ? (list$ | async)! : items"
-  (onChange)="select.filterValue = $event?.value; onFilterEmitter($event)"
+  (onChange)="
+    select.filterValue ? (select.filterValue = $event?.value) : null;
+    onFilterEmitter($event)
+  "
   [formControl]="control | formControl"
   [editable]="true"
   [filter]="select?.value?.length > 0 ? true : false"
-  (onFocus)="select.show()"
   [optionLabel]="optionLabel"
   [placeholder]="placeholder"
   [autoDisplayFirst]="autoDisplayFirst"
@@ -20,6 +22,7 @@
   (onShow)="onShowDropdown($event)"
   (onHide)="select.resetFilter()"
   [appNumbersOnly]="isNumberInput"
+  (onClick)="onClick()"
 >
   <!--  item template -->
   <ng-template *ngIf="!itemTemplate" let-option pTemplate="item">
