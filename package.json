@@ -19,7 +19,6 @@
     "@angular/platform-browser": "^17.2.3",
     "@angular/platform-browser-dynamic": "^17.2.3",
     "@angular/router": "^17.2.3",
-    "@randomsoftwareltd/type-head-input": "file:dist/type-head-input/randomsoftwareltd-type-head-input-2.0.0.tgz",
     "primeflex": "^3.3.1",
     "primeicons": "^6.0.1",
     "primeng": "^17.11.0",
