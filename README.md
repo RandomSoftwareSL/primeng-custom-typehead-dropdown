@@ -14,7 +14,7 @@ TypeHead Input is an Angular library that provides a customizable dropdown input
 Make sure to install the following dependencies in your Angular project:
 
 ```bash
-npm install primeflex@^3.3.1 primeicons@^6.0.1 primeng@^15.1.4
+npm install primeflex@^3.3.1 primeicons@^6.0.1 primeng@^17.11.0
 ```
 
 # Additionally,
@@ -33,7 +33,7 @@ import the required styles in your styles.scss file:
 To install the TypeHead Input library, run the following command:
 
 ```bash
-npm install type-head-input
+npm i @randomsoftwareltd/type-head-input
 ```
 
 # Usage
@@ -41,7 +41,7 @@ npm install type-head-input
 1. Import the TypeHeadInputModule in your Angular module:
 
 ```typescript
-import { TypeHeadInputModule } from "type-head-input";
+import { TypeHeadInputModule } from "@randomsoftwareltd/type-head-input";
 
 @NgModule({
   declarations: [
@@ -76,7 +76,7 @@ example : -
 
 # Development
 
-This project was generated with Angular CLI version 15.1.4.
+This project was generated with Angular CLI version 17.2.3.
 
 # Development server
 
