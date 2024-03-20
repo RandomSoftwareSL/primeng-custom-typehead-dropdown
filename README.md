@@ -61,9 +61,12 @@ example : -
 
 <form [formGroup]="consumerForm">
   <typeHeadInput
+    labelText="Year"
+    labelStyleClass="font-medium text-sm w-full mb-2 block"
+    typeHeadStyleClass="custom-dropdown"
     [disabled]="consumerForm.get('year')?.disabled ?? false"
     [control]="getFormControl['year'] | formControl"
-    [customClasses]="customSelectInputClass"
+    [dropDownStyleClass]="customSelectInputClass"
     [placeholder]="'Year'"
     [name]="'value'"
     [isNumberInput]="true"

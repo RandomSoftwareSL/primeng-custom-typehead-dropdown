@@ -1,3 +1,7 @@
+<label *ngIf="isFormLabel" [class]="labelStyleClass"
+  >{{ labelText }}
+  <span *ngIf="showRequiredIndicator" class="text-red-500"> * </span></label
+>
 <p-dropdown
   #select
   [options]="enableServerSideData ? (list$ | async)! : items"
@@ -12,11 +16,11 @@
   [placeholder]="placeholder"
   [autoDisplayFirst]="autoDisplayFirst"
   [showClear]="showClear"
-  [styleClass]="customClasses"
+  [styleClass]="dropDownStyleClass"
   [panelStyleClass]="panelStyleClass"
   [disabled]="disabled"
   [name]="name"
-  class="custom-dropdown-typehead {{
+  class="{{ typeHeadStyleClass }} {{
     control.touched && control.invalid ? 'ng-invalid ng-dirty' : ''
   }}"
   (onShow)="onShowDropdown($event)"
