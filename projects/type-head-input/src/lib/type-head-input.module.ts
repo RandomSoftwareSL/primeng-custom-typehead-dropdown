@@ -10,6 +10,7 @@ import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { FormControlPipe } from "./pipe/form-Control.pipe";
 import { NumbersOnlyDirective } from "./directive/numbers-only.directive";
+import { ValueFilterPipe } from "./pipe/value-filter.pipe";
 @NgModule({
   declarations: [
     TypeHeadInputComponent,
@@ -17,6 +18,7 @@ import { NumbersOnlyDirective } from "./directive/numbers-only.directive";
     NgTypeHeadInputFilterTemplateDirective,
     NumbersOnlyDirective,
     FormControlPipe,
+    ValueFilterPipe,
   ],
   imports: [
     CommonModule,
@@ -33,6 +35,7 @@ import { NumbersOnlyDirective } from "./directive/numbers-only.directive";
     DropdownModule,
     SkeletonModule,
     FormControlPipe,
+    ValueFilterPipe,
   ],
 })
 export class TypeHeadInputModule {}

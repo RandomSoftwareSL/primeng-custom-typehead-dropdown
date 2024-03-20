@@ -4,11 +4,12 @@
 >
 <p-dropdown
   #select
-  [options]="enableServerSideData ? (list$ | async)! : items"
-  (onChange)="
-    select.filterValue ? (select.filterValue = $event?.value) : null;
-    onFilterEmitter($event)
+  [options]="
+    enableServerSideData
+      ? ((list$ | async)! | valueFilter : searchValue : 'value')
+      : (items | valueFilter : searchValue : 'value')
   "
+  (onChange)="onFilterEmitter($event)"
   [formControl]="control | formControl"
   [editable]="true"
   [filter]="select?.value?.length > 0 ? true : false"

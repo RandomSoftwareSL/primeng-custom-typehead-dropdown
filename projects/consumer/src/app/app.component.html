@@ -9,10 +9,11 @@
     [placeholder]="'Year'"
     [name]="'value'"
     [isNumberInput]="true"
-    [serverSideSearchCallback]="yearCallBackFunction"
     [enableServerSideData]="true"
-    (newValue)="changeSelectedText($event)"
+    [serverSideSearchCallback]="yearCallBackFunction"
     [customFieldText]="'Year'"
     requiredErrorMessage="Year filed cannot be empty"
+    [autoDisplayFirst]="true"
+    placeholder="Year"
   ></typeHeadInput>
 </form>
