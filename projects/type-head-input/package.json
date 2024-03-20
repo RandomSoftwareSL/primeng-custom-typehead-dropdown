@@ -1,6 +1,6 @@
 {
   "name": "@randomsoftwareltd/type-head-input",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "peerDependencies": {
     "@angular/common": "^17.2.3",
     "@angular/core": "^17.2.3",
