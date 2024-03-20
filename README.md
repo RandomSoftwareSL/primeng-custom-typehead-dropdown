@@ -59,6 +59,7 @@ export class YourModule {}
 
 example : -
 
+```html
 <form [formGroup]="consumerForm">
   <typeHeadInput
     labelText="Year"
@@ -70,12 +71,15 @@ example : -
     [placeholder]="'Year'"
     [name]="'value'"
     [isNumberInput]="true"
-    [serverSideSearchCallback]="yearCallBackFunction"
     [enableServerSideData]="true"
+    [serverSideSearchCallback]="yearCallBackFunction"
     [customFieldText]="'Year'"
-    (newValue)="changeSelectedText($event)"
+    requiredErrorMessage="Year filed cannot be empty"
+    [autoDisplayFirst]="true"
+    placeholder="Year"
   ></typeHeadInput>
 </form>
+```
 
 # Development
 

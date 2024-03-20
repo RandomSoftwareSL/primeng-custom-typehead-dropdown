@@ -77,6 +77,7 @@ export class TypeHeadInputComponent {
   newValueSource = new BehaviorSubject<any>(null);
   newValueObs$ = this.newValueSource.asObservable();
   isAvailability: boolean = false;
+  searchValue!: string;
 
   constructor() {}
 
@@ -184,6 +185,11 @@ export class TypeHeadInputComponent {
   }
 
   onFilterEmitter(event: any) {
+    this.searchValue =
+      typeof this.select?.value === "object" &&
+      this.select?.value.hasOwnProperty("value")
+        ? this.select?.value?.value
+        : this.select?.value;
     if (this.enableServerSideData) {
       if (this.select?.options === null) {
         this.selectedTypeHeadSource.next(event);
@@ -191,24 +197,24 @@ export class TypeHeadInputComponent {
       }
       this.isAvailability = this.select?.options!.some((item) => {
         return this.isCaseInsensitive
-          ? item.value.toLowerCase() === this.select?.filterValue?.toLowerCase()
-          : item.value === this.select.filterValue;
+          ? item.value?.toLowerCase() === this.searchValue?.toLowerCase()
+          : item?.value === this.searchValue;
       });
     } else {
       this.isAvailability = this.items.some((item) => {
         return this.isCaseInsensitive
-          ? item.value.toLowerCase() === this.select?.filterValue?.toLowerCase()
-          : item.value === this.select.filterValue;
+          ? item?.value?.toLowerCase() === this.searchValue?.toLowerCase()
+          : item?.value === this.searchValue;
       });
     }
   }
-
 
   onClick() {
     if (this.select.overlayVisible) {
       this.select.show();
     } else {
       this.select.hide();
+      this.searchValue = "";
     }
   }
 }

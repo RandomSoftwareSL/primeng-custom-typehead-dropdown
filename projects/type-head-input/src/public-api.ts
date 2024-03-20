@@ -8,3 +8,4 @@ export * from "./lib/type-head-input.module";
 export * from "./lib/directive/form-template.directive";
 export * from "./lib/pipe/form-Control.pipe";
 export * from "./lib/directive/numbers-only.directive";
+export * from "./lib/pipe/value-filter.pipe";
