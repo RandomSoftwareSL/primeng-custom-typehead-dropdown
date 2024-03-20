@@ -39,7 +39,7 @@ export class TypeHeadInputComponent {
   @Input() optionLabel: string = "label";
   @Input() autoDisplayFirst: boolean = false;
   @Input() showClear: boolean = false;
-  @Input() customClasses!: string;
+  @Input() dropDownStyleClass!: string;
   @Input() panelStyleClass!: string;
   @Input() customFieldText!: string;
   @Input() name!: string;
@@ -57,6 +57,11 @@ export class TypeHeadInputComponent {
   } field cannot be empty`;
   @Output() newValue = new EventEmitter();
   @Input() serverSideSearchCallback!: () => Observable<SelectItem[]>;
+  @Input() showRequiredIndicator: boolean = false;
+  @Input() labelStyleClass!: string;
+  @Input() isFormLabel = true;
+  @Input() typeHeadStyleClass!: string;
+  @Input() labelText!: string;
   selectedTypeHeadSource = new BehaviorSubject<any>(null);
   selectedTypeHead$ = this.selectedTypeHeadSource.asObservable();
   loading = false;
