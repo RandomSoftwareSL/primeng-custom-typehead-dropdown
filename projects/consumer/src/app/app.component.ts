@@ -3,6 +3,7 @@ import {
   UntypedFormBuilder,
   UntypedFormControl,
   UntypedFormGroup,
+  Validators,
 } from "@angular/forms";
 import { SelectItem } from "primeng/api";
 import { BehaviorSubject, map, of } from "rxjs";
@@ -23,7 +24,7 @@ export class AppComponent {
 
   constructor(private formBuilder: UntypedFormBuilder) {
     this.consumerForm = this.formBuilder.group({
-      year: new UntypedFormControl(""),
+      year: new UntypedFormControl("", Validators.required),
     });
 
     const years = [

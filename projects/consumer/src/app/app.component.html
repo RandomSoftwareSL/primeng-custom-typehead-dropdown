@@ -11,7 +11,8 @@
     [isNumberInput]="true"
     [serverSideSearchCallback]="yearCallBackFunction"
     [enableServerSideData]="true"
-    [customFieldText]="'Year'"
     (newValue)="changeSelectedText($event)"
+    [customFieldText]="'Year'"
+    requiredErrorMessage="Year filed cannot be empty"
   ></typeHeadInput>
 </form>

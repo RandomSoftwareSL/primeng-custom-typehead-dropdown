@@ -14,7 +14,7 @@ TypeHead Input is an Angular library that provides a customizable dropdown input
 Make sure to install the following dependencies in your Angular project:
 
 ```bash
-npm install primeflex@^3.3.1 primeicons@^6.0.1 primeng@^15.1.4
+npm install primeflex@^3.3.1 primeicons@^6.0.1 primeng@^17.11.0
 ```
 
 # Additionally,
@@ -33,7 +33,7 @@ import the required styles in your styles.scss file:
 To install the TypeHead Input library, run the following command:
 
 ```bash
-npm install type-head-input
+npm i @randomsoftwareltd/type-head-input
 ```
 
 # Usage
@@ -61,16 +61,20 @@ example : -
 
 <form [formGroup]="consumerForm">
   <typeHeadInput
+    labelText="Year"
+    labelStyleClass="font-medium text-sm w-full mb-2 block"
+    typeHeadStyleClass="custom-dropdown"
     [disabled]="consumerForm.get('year')?.disabled ?? false"
     [control]="getFormControl['year'] | formControl"
-    [customClasses]="customSelectInputClass"
+    [dropDownStyleClass]="customSelectInputClass"
     [placeholder]="'Year'"
     [name]="'value'"
     [isNumberInput]="true"
     [serverSideSearchCallback]="yearCallBackFunction"
     [enableServerSideData]="true"
-    [customFieldText]="'Year'"
     (newValue)="changeSelectedText($event)"
+    [customFieldText]="'Year'"
+    requiredErrorMessage="Year filed cannot be empty"
   ></typeHeadInput>
 </form>
 

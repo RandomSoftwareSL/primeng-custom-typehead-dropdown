@@ -50,11 +50,7 @@ export class TypeHeadInputComponent {
   @Input() isCaseInsensitive = false;
   @Input() noResultsFoundText: string = "No results found";
   @Input() addNewText: string = "+ Add";
-  @Input() requiredErrorMessage: string = `${
-    this.customFieldText
-      ? this.capitalizeString(this.customFieldText)
-      : this.capitalizeString(this.placeholder)
-  } field cannot be empty`;
+  @Input() requiredErrorMessage!: string;
   @Output() newValue = new EventEmitter();
   @Input() serverSideSearchCallback!: () => Observable<SelectItem[]>;
   @Input() showRequiredIndicator: boolean = false;
@@ -207,21 +203,6 @@ export class TypeHeadInputComponent {
     }
   }
 
-  capitalizeString(input: string): string {
-    if (input) {
-      input = input.replaceAll(/[_-]/g, " ");
-      let inputSplit = input.split(" ");
-
-      inputSplit = inputSplit.map((text) => {
-        return `${text?.charAt(0).toUpperCase()}${text
-          ?.slice(1)
-          .toLocaleLowerCase()}`;
-      });
-
-      return inputSplit.join(" ");
-    }
-    return "";
-  }
 
   onClick() {
     if (this.select.overlayVisible) {

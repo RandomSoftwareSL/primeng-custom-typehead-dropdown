@@ -73,7 +73,15 @@
   <div class="mt-1" *ngFor="let error of control?.errors | keyvalue">
     <div [ngSwitch]="error?.key">
       <div *ngSwitchCase="'required'">
-        <span class="text-xs text-red-400"> {{ requiredErrorMessage }}</span>
+        <span class="text-xs text-red-400">
+          {{
+            requiredErrorMessage
+              ? requiredErrorMessage
+              : customFieldText
+              ? (customFieldText | titlecase) + " field cannot be empty"
+              : (placeholder | titlecase) + " field cannot be empty"
+          }}
+        </span>
       </div>
     </div>
   </div>
