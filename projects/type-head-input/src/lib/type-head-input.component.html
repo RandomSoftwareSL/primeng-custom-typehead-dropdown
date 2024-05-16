@@ -28,6 +28,7 @@
   (onHide)="select.resetFilter()"
   [appNumbersOnly]="isNumberInput"
   (onClick)="onClick()"
+  (onBlur)="setEmptyHandler()"
 >
   <!--  item template -->
   <ng-template *ngIf="!itemTemplate" let-option pTemplate="item">

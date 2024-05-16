@@ -185,9 +185,10 @@ export class TypeHeadInputComponent {
   }
 
   onFilterEmitter(event: any) {
+    this.setEmptyHandler();
     this.searchValue =
       typeof this.select?.value === "object" &&
-      this.select?.value.hasOwnProperty("value")
+      this.select?.value?.hasOwnProperty("value")
         ? this.select?.value?.value
         : this.select?.value;
     if (this.enableServerSideData) {
@@ -217,4 +218,10 @@ export class TypeHeadInputComponent {
       this.searchValue = "";
     }
   }
+
+  setEmptyHandler = () => {
+    if (this.control.value === "") {
+      this.control.patchValue(null);
+    }
+  };
 }
