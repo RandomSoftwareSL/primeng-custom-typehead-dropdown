@@ -19,7 +19,7 @@ export class AppComponent {
   customSelectInputClass = "w-full text-sm h-3rem";
   typeHeadYearDataSet!: SelectItem[];
 
-  yearSource = new BehaviorSubject<any>(null!);
+  yearSource = new BehaviorSubject<string[]>(null!);
   yearObs$ = this.yearSource.asObservable();
 
   constructor(private formBuilder: UntypedFormBuilder) {
@@ -76,17 +76,19 @@ export class AppComponent {
     if (!this.typeHeadYearDataSet) {
       return this.yearObs$.pipe(
         map((years) => {
-          const yearsArray: any = [];
-          years.forEach((yearValue: any) => {
-            let year = { year: yearValue };
+          const yearsArray: { year: string }[] = [];
+          years.forEach((yearValue: string) => {
+            const year = { year: yearValue };
             yearsArray.push(year);
           });
-          this.typeHeadYearDataSet = yearsArray.map((years: { year: any }) => {
-            return {
-              label: years.year,
-              value: years.year,
-            };
-          });
+          this.typeHeadYearDataSet = yearsArray.map(
+            (years: { year: string }) => {
+              return {
+                label: years.year,
+                value: years.year,
+              };
+            }
+          );
           return this.typeHeadYearDataSet;
         })
       );
@@ -94,9 +96,11 @@ export class AppComponent {
     return of();
   };
 
-  changeSelectedText(event: any) {
-    this.consumerForm.patchValue({
-      year: event?.addedValue,
-    });
-  }
+  disabled = () => {
+    this.getFormControl["year"].disable();
+  };
+
+  enable = () => {
+    this.getFormControl["year"].enable();
+  };
 }
