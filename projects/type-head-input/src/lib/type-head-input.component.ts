@@ -4,6 +4,7 @@ import {
   EventEmitter,
   Input,
   Output,
+  SimpleChanges,
   TemplateRef,
   ViewChild,
 } from "@angular/core";
@@ -24,7 +25,7 @@ import {
 } from "./directive/form-template.directive";
 import { SelectItem } from "primeng/api";
 import { UntypedFormControl } from "@angular/forms";
-import { Dropdown } from "primeng/dropdown";
+import { Dropdown, DropdownChangeEvent } from "primeng/dropdown";
 
 @Component({
   selector: "typeHeadInput",
@@ -58,6 +59,7 @@ export class TypeHeadInputComponent {
   @Input() isFormLabel = true;
   @Input() typeHeadStyleClass!: string;
   @Input() labelText!: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   selectedTypeHeadSource = new BehaviorSubject<any>(null);
   selectedTypeHead$ = this.selectedTypeHeadSource.asObservable();
   loading = false;
@@ -66,14 +68,17 @@ export class TypeHeadInputComponent {
 
   // custom templates
   @ContentChild(NgTypeHeadInputItemTemplateDirective, { read: TemplateRef })
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   itemTemplate: TemplateRef<any> | undefined;
   @ContentChild(NgTypeHeadInputFilterTemplateDirective, { read: TemplateRef })
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   filterTemplate: TemplateRef<any> | undefined;
 
   //Extract label data
   optionLabels!: (string | undefined)[];
 
   newCreatedValue!: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   newValueSource = new BehaviorSubject<any>(null);
   newValueObs$ = this.newValueSource.asObservable();
   isAvailability: boolean = false;
@@ -82,6 +87,9 @@ export class TypeHeadInputComponent {
   constructor() {}
 
   ngOnInit(): void {
+    if (this.disabled) {
+      this.control.disable();
+    }
     if (this.isNumberInput) {
       this.allowNumberInput();
     }
@@ -130,10 +138,12 @@ export class TypeHeadInputComponent {
     }
   }
 
+   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onShowDropdown(event: any) {
     if (this.enableServerSideData) this.selectedTypeHeadSource.next(event);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   addNewValue(inputValue?: any) {
     if (inputValue) {
       if (this.enableServerSideData) {
@@ -177,6 +187,7 @@ export class TypeHeadInputComponent {
     this.optionLabels = this.items?.map((item) => item.label);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   checkInitialData(select: any) {
     return (
       select?.value?.length > 0 &&
@@ -184,7 +195,7 @@ export class TypeHeadInputComponent {
     );
   }
 
-  onFilterEmitter(event: any) {
+  onFilterEmitter(event: DropdownChangeEvent) {
     this.setEmptyHandler();
     this.searchValue =
       typeof this.select?.value === "object" &&
@@ -224,4 +235,14 @@ export class TypeHeadInputComponent {
       this.control.patchValue(null);
     }
   };
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes["disabled"] && !changes["disabled"].isFirstChange()) {
+      if (this.disabled) {
+        this.control.disable();
+      } else {
+        this.control.enable();
+      }
+    }
+  }
 }
