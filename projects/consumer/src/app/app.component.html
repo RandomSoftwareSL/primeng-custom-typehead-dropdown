@@ -15,7 +15,14 @@
     requiredErrorMessage="Year filed cannot be empty"
     [autoDisplayFirst]="true"
     placeholder="Year"
-  ></typeHeadInput>
+    [isVirtualScroll]="true"
+    [virtualScrollItemSize]="40"
+    [virtualScrollOptions]="virtualScrollOptions"
+  >
+    <ng-template appTypeheadInputLoaderTmp>
+      <div class="px-4 pt-3">loading ...</div>
+    </ng-template>
+  </typeHeadInput>
 </form>
 
 <button (click)="disabled()">disabled</button>

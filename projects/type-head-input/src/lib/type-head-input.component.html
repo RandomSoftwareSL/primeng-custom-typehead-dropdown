@@ -28,6 +28,9 @@
   [appNumbersOnly]="isNumberInput"
   (onClick)="onClick()"
   (onBlur)="setEmptyHandler()"
+  [virtualScroll]="isVirtualScroll"
+  [virtualScrollItemSize]="virtualScrollItemSize"
+  [virtualScrollOptions]="virtualScrollOptions"
 >
   <!--  item template -->
   <ng-template *ngIf="!itemTemplate" let-option pTemplate="item">
@@ -46,6 +49,11 @@
       [ngTemplateOutlet]="itemTemplate"
       [ngTemplateOutletContext]="{ optionLabel: option.label }"
     ></ng-container>
+  </ng-template>
+
+  <!-- override loader template -->
+  <ng-template *ngIf="loaderTemplate" pTemplate="loader">
+    <ng-container [ngTemplateOutlet]="loaderTemplate"></ng-container>
   </ng-template>
 
   <!-- filter template -->
