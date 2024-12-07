@@ -22,8 +22,9 @@ import {
 import {
   NgTypeHeadInputFilterTemplateDirective,
   NgTypeHeadInputItemTemplateDirective,
+  NgTypeHeadInputLoaderTemplateDirective,
 } from "./directive/form-template.directive";
-import { SelectItem } from "primeng/api";
+import { ScrollerOptions, SelectItem } from "primeng/api";
 import { UntypedFormControl } from "@angular/forms";
 import { Dropdown, DropdownChangeEvent } from "primeng/dropdown";
 
@@ -59,6 +60,13 @@ export class TypeHeadInputComponent {
   @Input() isFormLabel = true;
   @Input() typeHeadStyleClass!: string;
   @Input() labelText!: string;
+  @Input() isVirtualScroll: boolean = false;
+  @Input() virtualScrollOptions: ScrollerOptions = {
+    delay: 50,
+    showLoader: true,
+    lazy: true,
+  };
+  @Input() virtualScrollItemSize: number = 40;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   selectedTypeHeadSource = new BehaviorSubject<any>(null);
   selectedTypeHead$ = this.selectedTypeHeadSource.asObservable();
@@ -73,6 +81,9 @@ export class TypeHeadInputComponent {
   @ContentChild(NgTypeHeadInputFilterTemplateDirective, { read: TemplateRef })
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   filterTemplate: TemplateRef<any> | undefined;
+  @ContentChild(NgTypeHeadInputLoaderTemplateDirective, { read: TemplateRef })
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  loaderTemplate: TemplateRef<any> | undefined;
 
   //Extract label data
   optionLabels!: (string | undefined)[];
@@ -138,7 +149,7 @@ export class TypeHeadInputComponent {
     }
   }
 
-   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onShowDropdown(event: any) {
     if (this.enableServerSideData) this.selectedTypeHeadSource.next(event);
   }

@@ -1,11 +1,16 @@
-import { Directive, TemplateRef } from '@angular/core';
+import { Directive, TemplateRef } from "@angular/core";
 
-@Directive({ selector: '[appTypeheadInputItemTmp]' })
+@Directive({ selector: "[appTypeheadInputItemTmp]" })
 export class NgTypeHeadInputItemTemplateDirective {
   constructor(public template: TemplateRef<any>) {}
 }
 
-@Directive({ selector: '[appTypeheadInputFilterTmp]' })
+@Directive({ selector: "[appTypeheadInputFilterTmp]" })
 export class NgTypeHeadInputFilterTemplateDirective {
+  constructor(public template: TemplateRef<any>) {}
+}
+
+@Directive({ selector: "[appTypeheadInputLoaderTmp]" })
+export class NgTypeHeadInputLoaderTemplateDirective {
   constructor(public template: TemplateRef<any>) {}
 }
