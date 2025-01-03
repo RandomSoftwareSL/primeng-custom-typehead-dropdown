@@ -1,12 +1,12 @@
 {
   "name": "@randomsoftwareltd/type-head-input",
-  "version": "2.1.1",
+  "version": "2.2.1",
   "peerDependencies": {
     "@angular/common": "^17.2.3",
     "@angular/core": "^17.2.3",
     "primeflex": "^3.3.1",
     "primeicons": "^7.0.0",
-    "primeng": "^17.18.0"
+    "primeng": "17.18.15"
   },
   "dependencies": {
     "tslib": "^2.3.0"
