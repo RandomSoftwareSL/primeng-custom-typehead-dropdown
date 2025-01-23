@@ -24,7 +24,7 @@ import {
   NgTypeHeadInputItemTemplateDirective,
   NgTypeHeadInputLoaderTemplateDirective,
 } from "./directive/form-template.directive";
-import { ScrollerOptions, SelectItem } from "primeng/api";
+import { OverlayOptions, ScrollerOptions, SelectItem } from "primeng/api";
 import { UntypedFormControl } from "@angular/forms";
 import { Dropdown, DropdownChangeEvent } from "primeng/dropdown";
 
@@ -67,6 +67,7 @@ export class TypeHeadInputComponent {
     lazy: true,
   };
   @Input() virtualScrollItemSize: number = 40;
+  @Input() overlayOptions: OverlayOptions | undefined;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   selectedTypeHeadSource = new BehaviorSubject<any>(null);
   selectedTypeHead$ = this.selectedTypeHeadSource.asObservable();
