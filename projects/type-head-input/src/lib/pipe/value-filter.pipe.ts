@@ -2,6 +2,7 @@ import { Pipe, PipeTransform } from "@angular/core";
 
 @Pipe({
   name: "valueFilter",
+  standalone: false,
 })
 export class ValueFilterPipe implements PipeTransform {
   transform(

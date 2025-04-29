@@ -5,7 +5,7 @@ import {
   NgTypeHeadInputItemTemplateDirective,
   NgTypeHeadInputLoaderTemplateDirective,
 } from "./directive/form-template.directive";
-import { DropdownModule } from "primeng/dropdown";
+import { SelectModule } from "primeng/select";
 import { SkeletonModule } from "primeng/skeleton";
 import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -25,7 +25,7 @@ import { ValueFilterPipe } from "./pipe/value-filter.pipe";
   imports: [
     CommonModule,
     FormsModule,
-    DropdownModule,
+    SelectModule,
     SkeletonModule,
     ReactiveFormsModule,
   ],
@@ -35,7 +35,7 @@ import { ValueFilterPipe } from "./pipe/value-filter.pipe";
     NgTypeHeadInputFilterTemplateDirective,
     NgTypeHeadInputLoaderTemplateDirective,
     NumbersOnlyDirective,
-    DropdownModule,
+    SelectModule,
     SkeletonModule,
     FormControlPipe,
     ValueFilterPipe,

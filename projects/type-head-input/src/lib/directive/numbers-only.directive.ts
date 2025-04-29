@@ -8,6 +8,7 @@ import {
 
 @Directive({
   selector: "[appNumbersOnly]",
+  standalone: false,
 })
 export class NumbersOnlyDirective implements OnDestroy {
   regexStr = "^[0-9]+$";
