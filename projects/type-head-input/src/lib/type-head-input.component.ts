@@ -32,6 +32,7 @@ import { Dropdown, DropdownChangeEvent } from "primeng/dropdown";
   selector: "typeHeadInput",
   templateUrl: "./type-head-input.component.html",
   styleUrls: ["./type-head-input.component.scss"],
+  standalone: false,
 })
 export class TypeHeadInputComponent {
   @ViewChild("select") select!: Dropdown;

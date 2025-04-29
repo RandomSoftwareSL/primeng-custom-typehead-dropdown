@@ -2,7 +2,7 @@
   >{{ labelText }}
   <span *ngIf="showRequiredIndicator" class="text-red-500"> * </span></label
 >
-<p-dropdown
+<p-select
   #select
   [options]="
     enableServerSideData
@@ -77,7 +77,7 @@
       [ngTemplateOutletContext]="{ selectValue: select.value }"
     ></ng-container>
   </ng-template>
-</p-dropdown>
+</p-select>
 
 <ng-container *ngIf="control.touched">
   <div class="mt-1" *ngFor="let error of control?.errors | keyvalue">
